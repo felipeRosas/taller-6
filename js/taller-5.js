@@ -1,5 +1,104 @@
 $(document).ready(function(){
 
+    cargarTabla();
+
+    function cargarTabla()
+{
+  $.ajax({
+            type:"POST",
+            url:"~/../functions/cargarMarcas.php",
+            success: function(response){
+     
+
+			var datos = JSON.parse(response);
+			
+			if(datos.respuesta !="ok"){
+				
+					alert(datos.respuesta);
+				
+			}else{
+				$("#datos-marca").html("");
+			   $("#datos-marca").html(datos.resultadohtml); 
+				
+				   $(".btneditar").click(function(){
+									$("#modalEditar").modal("show");
+								 var id_marca = $(this).parents("tr").find("td")[0].innerHTML;
+								 $("#id_marcaedit").val(id_marca);
+								 
+								  var descripcion = $(this).parents("tr").find("td")[1].innerHTML;
+								 $("#descripcionedit").val(descripcion);
+								 
+								  
+
+                        });
+                    
+                    $('.btneliminar').click(function(){
+                        alert("eliminar");
+                    });
+
+			}
+			
+			
+            }
+        });
+
+
+}
+
+
+$("#btnModificar").click(function(){
+		
+    Modificar();
+
+});
+
+function Modificar(){
+	
+    var id_marca=$('#id_marcaedit').val();
+    var descripcion=$('#descripcionedit').val();
+    
+
+ 
+    $.ajax({
+            type:"GET",
+            url:"~/../functions/modificarMarca.php",
+            data: { 'id_marcaedit' : id_marca, 'descripcion_marcaedit':descripcion},
+            datatype : "application/json",
+            success: function(response){
+            
+            
+            toastr.success("Registro Modificado");
+            cargarTabla();
+            $('#modalEditar').modal('hide');
+                
+            }   ,
+            failure: function (response) {
+                alert(response);
+            
+            }
+
+            
+        });
+
+
+
+
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     var formulario1 = $("#formulario1");
     var formulario2 = $("#formulario2");
 

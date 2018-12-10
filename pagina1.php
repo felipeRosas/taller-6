@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>taller 5</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <script
-			  src="https://code.jquery.com/jquery-3.3.1.js"
-			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-			  crossorigin="anonymous"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
     <style>
-        body{background: #B2FEFA;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        body{
+            /* background: #B2FEFA;  fallback for old browsers */
+            /* background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  Chrome 10-25, Safari 5.1-6 */
+            /* background: linear-gradient(to right, #0ED2F7, #B2FEFA); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background:#6dd5ed;
+            color:withe;
         }
     </style>
+
+    <link href="toast/toastr.min.css" rel="stylesheet"> 
+   <script src="toast/toastr.min.js"></script>
     
 </head>
 <body>
@@ -79,20 +82,22 @@
         
         <div class="row mt-3">
             <div class="col-6" id="datos-marca">
-                <?php
-                include 'functions/conexion.php';
-                $query = "select * from marca";
-                $datos = mysqli_query($conn,$query);
-                echo "<table id='tabla-marcas' class='table table-striped'>";
-				echo "<tr><td>Id</td><td>Nombre</td>";
-				while  ($fila= mysqli_fetch_array($datos)){
-				echo "<tr><td>".$fila ["id_marca"]."</td>";
-				echo "<td>".$fila ["descripcion_marca"]."</td>";
+                <!-- <?php
+                // include 'functions/conexion.php';
+                // $query = "select * from marca";
+                // $datos = mysqli_query($conn,$query);
+                // echo "<table id='tabla-marcas' class='table table-striped'>";
+				// echo "<tr><td>Id</td><td>Nombre</td><td>Editar</td><td>Eliminar</td></tr>";
+				// while  ($fila= mysqli_fetch_array($datos)){
+				// echo "<tr><td>".$fila ["id_marca"]."</td>";
+                // echo "<td>".$fila ["descripcion_marca"]."</td>";
+                // echo "<td><a class='btneditar btn btn-info' data-toggle='modal' data-target='#modalEditar'>Editar</a></td>";
+                // echo "<td><button class='btn btn-danger btn-sm'><a href=''>Borrar</a></button></td>";
 
      
-				}
-				echo "</table>";
-                ?>
+				// }
+				// echo "</table>";
+                ?> -->
             </div>
 
             <div class="col-6" id="datos-modelo">
@@ -114,6 +119,39 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title">Editar Datos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+        <label for="id_marca">id_marca</label>
+        <input type="text" readonly class="form-control" id="id_marcaedit" >
+
+    </div>
+    <div class="form-group">
+        <label for="">Descripcion </label>
+        <input type="text" class="form-control" id="descripcionedit" >
+    </div>
+    
+        <div class="form-group">
+        
+    </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" id="btnModificar" class="btn btn-primary">Save </button>
+            <button type="button" class="btn btn-secondary" >Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
 
     <script src="js/taller-5.js"></script>
    
