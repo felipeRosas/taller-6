@@ -153,6 +153,40 @@
     </div>
     </div>
 
+
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title">Borrar Datos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+        <label for="id_marca">id_marca</label>
+        <input type="text" readonly class="form-control" id="id_marcaeliminar" >
+
+    </div>
+    <div class="form-group">
+        <label for="">Descripcion </label>
+        <input type="text" readonly class="form-control" id="descripcioneliminar" >
+    </div>
+    
+        <div class="form-group">
+        
+    </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" id="btneliminar" class="btn btn-primary">Delete </button>
+            <button type="button" class="btn btn-secondary" >Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
     <script src="js/taller-5.js"></script>
    
 </body>

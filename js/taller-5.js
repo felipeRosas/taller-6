@@ -33,7 +33,11 @@ $(document).ready(function(){
                         });
                     
                     $('.btneliminar').click(function(){
-                        alert("eliminar");
+                        var id_marca = $(this).parents("tr").find("td")[0].innerHTML;
+                        $("#id_marcaeliminar").val(id_marca);
+
+                        var descripcion = $(this).parents("tr").find("td")[1].innerHTML;
+								 $("#descripcioneliminar").val(descripcion);
                     });
 
 			}
@@ -70,20 +74,42 @@ function Modificar(){
             toastr.success("Registro Modificado");
             cargarTabla();
             $('#modalEditar').modal('hide');
-                
             }   ,
             failure: function (response) {
                 alert(response);
             
             }
-
-            
         });
 
+}
+
+$("#btneliminar").click(function(){
+    eliminar();
+});
+
+function eliminar(){
+    var id_marca = $("#id_marcaeliminar").val();
+
+    $.ajax({
+        type:"GET",
+        url:"~/../functions/eliminarMarca.php",
+        data: { 'id_marcaeliminar' : id_marca},
+        datatype : "application/json",
+        success: function(response){
+        
+        
+        toastr.success("Registro Modificado");
+        cargarTabla();
+        $('#modalEliminar').modal('hide');
+        }   ,
+        failure: function (response) {
+            alert(response);
+        
+        }
+    });
+}
 
 
-
-}	
 
 
 
